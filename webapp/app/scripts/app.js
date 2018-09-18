@@ -15,21 +15,53 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.router'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
+  .config(function($provide) {
+    $provide.constant('routes', [{
+      name: 'teacher',
+      templateUrl: 'views/teacher/index.html',
+      controller: 'TeacherCtrl',
+      url: '/'
+    }, {
+      name: 'teacher.edit',
+      templateUrl: 'views/teacher/edit.html',
+      url: 'edit/:id',
+      controller: 'TeacherEditCtrl'
+    }, {
+      name: 'teacher.view',
+      templateUrl: 'views/teacher/view.html',
+      controller: 'TeacherViewCtrl',
+      url: 'view/:id'
+    }, {
+      name: 'teacher.add',
+      templateUrl: 'views/teacher/add.html',
+      controller: 'AddCtrl',
+      url: 'add'
+    }]);
+  })
+  .config(function($stateProvider, $urlRouterProvider, routes) {
+    angular.forEach(routes, function(value) {
+      $stateProvider.state(value);
+    });
+    $urlRouterProvider.otherwise('/');
+  })
+  .config(function($provide, $httpProvider) {
+    // register the interceptor as a service
+    $provide.factory('myHttpInterceptor', function() {
+      return {
+        // optional method
+        'request': function(config) {
+          // do something on success
+          var url = config.url;
+          var suffix = url.split('.').pop();
+          if (suffix !== 'html' && suffix !== 'css') {
+            config.url = 'http://localhost:8080' + config.url;
+          }
+          return config;
+        },
+      };
+    });
+    $httpProvider.interceptors.push('myHttpInterceptor');
   });

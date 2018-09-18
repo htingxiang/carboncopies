@@ -1,0 +1,23 @@
+<ui-view>
+  <button class="btn btn-default" type="submit" style="margin-bottom: 20px;" ng-click="add()">add</button>
+  <table class="table table-striped">
+    <tr>
+      <td>username</td>
+      <td>name</td>
+      <td>email</td>
+      <td>sex</td>
+      <td>delete</td>
+      <td>view</td>
+      <td>update</td>
+    </tr>
+    <tr ng-repeat="(key, teacher) in teachers">
+      <td>{{teacher.username}}</td>
+      <td>{{teacher.name}}</td>
+      <td>{{teacher.email}}</td>
+      <td>{{teacher.sex}}</td>
+      <td><a ng-click="delete(teacher.id)">delete</a></td>
+      <td><a ng-href="#!/view/{{teacher.id}}">view</a></td>
+      <td><a ng-href="#!/edit/{{teacher.id}}">edit</a></td>
+    </tr>
+  </table>
+</ui-view>
