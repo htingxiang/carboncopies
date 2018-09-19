@@ -1,0 +1,17 @@
+<ui-view>
+  <button class="btn btn-default" type="submit" style="margin-bottom: 20px;" ng-click="add()">add</button>
+  <table class="table table-striped">
+    <tr>
+      <td>username</td>
+      <td>name</td>
+      <td>sex</td>
+      <td>teacher</td>
+    </tr>
+    <tr ng-repeat="(key, klass) in klasses">
+      <td>{{klass.username}}</td>
+      <td>{{klass.name}}</td>
+      <td>{{klass.sex}}</td>
+      <td>{{klass.teacher.name}}</td>
+    </tr>
+  </table>
+</ui-view>
