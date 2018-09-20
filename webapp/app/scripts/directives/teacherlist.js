@@ -16,6 +16,7 @@ angular.module('webappApp')
       	teacher: '='
       },
       link: function postLink(scope, element, attrs) {
+        scope.empty = {};
       }
     };
   });

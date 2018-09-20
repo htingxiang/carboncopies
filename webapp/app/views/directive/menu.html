@@ -1,0 +1,3 @@
+<ul class="nav navbar-nav">
+	<li ng-class="{'active': isActive(value.name)}" ng-repeat="(key, value) in routes"><a ui-sref="{{value.name}}" ng-show="{{value.message.show}}">{{value.message.title}}</a></li>
+</ul>

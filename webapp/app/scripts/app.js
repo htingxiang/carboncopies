@@ -23,42 +23,68 @@ angular
       name: 'teacher',
       templateUrl: 'views/teacher/index.html',
       controller: 'TeacherCtrl',
-      url: '/'
+      url: '/',
+      message: {
+        title: 'Teacher',
+        show: true
+      }
     }, {
       name: 'klass.edit',
       templateUrl: 'views/klass/edit.html',
       controller: 'KlassEditCtrl',
-      url: '/edit/:id'
+      url: '/edit/:id',
+      message: {
+        title: 'KlassEdit'
+      }
     },{
       name: 'klass.view',
       templateUrl: 'views/klass/view.html',
       url: '/view/:id',
-      controller: 'KlassViewCtrl'
+      controller: 'KlassViewCtrl',
+      message: {
+        title: 'KlassView'
+      }
     }, {
       name: 'klass',
       templateUrl: 'views/klass/index.html',
       controller: 'KlassIndexCtrl',
-      url: '/klass'
+      url: '/klass',
+      message: {
+        title: 'Klass',
+        show: true
+      }
     }, {
       name: 'klass.add',
       templateUrl: 'views/klass/add.html',
       controller: 'KlassAddCtrl',
-      url: '/add'
+      url: '/add',
+      message: {
+        title: 'KlassAdd'
+      }
     }, {
       name: 'teacher.edit',
       templateUrl: 'views/teacher/edit.html',
       url: 'edit/:id',
-      controller: 'TeacherEditCtrl'
+      controller: 'TeacherEditCtrl',
+      message: {
+        title: 'TeacherEdit'
+      }
     }, {
       name: 'teacher.view',
       templateUrl: 'views/teacher/view.html',
       controller: 'TeacherViewCtrl',
-      url: 'view/:id'
+      url: 'view/:id',
+      message: {
+        title: 'TeacherView'
+      }
     }, {
       name: 'teacher.add',
       templateUrl: 'views/teacher/add.html',
       controller: 'AddCtrl',
-      url: 'add'
+      url: 'add',
+      message: {
+        title: 'TeacherAdd'
+      }
     }]);
   })
   .config(function($stateProvider, $urlRouterProvider, routes) {

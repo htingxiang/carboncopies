@@ -11,9 +11,8 @@ angular.module('webappApp')
   .controller('KlassAddCtrl', function ($scope, $state, klass, teacher) {
     var self = this;
     self.init = function() {
-    	$scope.teacheres = {};
+    	$scope.teacheres = [];
     	$scope.klass = {
-    		teacher: {},
     		name: '',
     		username: '',
     		sex: ''
