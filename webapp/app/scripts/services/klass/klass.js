@@ -26,4 +26,28 @@ angular.module('webappApp')
     		alert('fail to add klass');
     	});
     };
+    this.get = function(id, callBack) {
+        $http.get('/klass/getKlass' + id)
+        .then(function(response) {
+            callBack(response.data);
+        }, function() {
+            alert('fail get teaher');
+        });
+    };
+    this.updata = function(id, klass, callBack) {
+        $http.put('/klass/updata' + id, klass)
+        .then(function() {
+            callBack();
+        }, function() {
+            alert('fail to updata klass');
+        });
+    };
+    this.delete = function(id, callBack) {
+        $http.delete('/klass/delete' + id)
+        .then(function() {
+            callBack();
+        }, function() {
+            alert('fail to delete klass');
+        });
+    };
   });

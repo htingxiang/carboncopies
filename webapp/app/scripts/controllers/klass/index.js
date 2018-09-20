@@ -19,6 +19,12 @@ angular.module('webappApp')
     self.add = function() {
     	$state.go('klass.add', {}, {reload: true});
     };
+    self.delete = function(id) {
+        klass.delete(id, function() {
+            $state.go('klass', {}, {reload: true});
+        });
+    };
+    $scope.delete = self.delete;
     $scope.add = self.add;
     self.init();
   });

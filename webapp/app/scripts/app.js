@@ -25,16 +25,26 @@ angular
       controller: 'TeacherCtrl',
       url: '/'
     }, {
+      name: 'klass.edit',
+      templateUrl: 'views/klass/edit.html',
+      controller: 'KlassEditCtrl',
+      url: '/edit/:id'
+    },{
+      name: 'klass.view',
+      templateUrl: 'views/klass/view.html',
+      url: '/view/:id',
+      controller: 'KlassViewCtrl'
+    }, {
       name: 'klass',
       templateUrl: 'views/klass/index.html',
       controller: 'KlassIndexCtrl',
       url: '/klass'
-    },{
+    }, {
       name: 'klass.add',
       templateUrl: 'views/klass/add.html',
       controller: 'KlassAddCtrl',
       url: '/add'
-    },{
+    }, {
       name: 'teacher.edit',
       templateUrl: 'views/teacher/edit.html',
       url: 'edit/:id',

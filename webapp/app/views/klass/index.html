@@ -6,12 +6,18 @@
       <td>name</td>
       <td>sex</td>
       <td>teacher</td>
+      <td>view</td>
+      <td>edit</td>
+      <td>delete</td>
     </tr>
     <tr ng-repeat="(key, klass) in klasses">
       <td>{{klass.username}}</td>
       <td>{{klass.name}}</td>
       <td>{{klass.sex}}</td>
       <td>{{klass.teacher.name}}</td>
+      <td><a ng-href="#!/klass/view/{{klass.id}}">view</a></td>
+      <td><a ng-href="#!/klass/edit/{{klass.id}}">edit</a></td>
+      <td><a ng-click="delete(klass.id)">delete</a></td>
     </tr>
   </table>
 </ui-view>
