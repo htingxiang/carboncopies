@@ -85,4 +85,15 @@ public class KlassControllerTest extends ControllerTest {
 
         assertThat(klassRepository.findById(id)).isEmpty();
     }
+
+    @Test
+    public void getByPage() throws Exception {
+        String pageUrl = this.url + "getByPage";
+        this.mockMvc
+                .perform(get(pageUrl).
+                        param("page","1").
+                        param("size","2"))
+                .andExpect(status().isOk())
+                .andDo(print());
+    }
 }

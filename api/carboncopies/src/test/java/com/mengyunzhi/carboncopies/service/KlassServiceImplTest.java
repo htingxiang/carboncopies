@@ -6,6 +6,8 @@ import com.mengyunzhi.carboncopies.repository.KlassRepository;
 import com.mengyunzhi.carboncopies.repository.TeacherRepository;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import sun.rmi.runtime.Log;
 
 import java.util.List;
 import java.util.Optional;
@@ -110,5 +112,20 @@ public class KlassServiceImplTest extends ServiceTest{
         Klass newKlass = klassRepository.findById(klass.getId()).get();
         assertThat(newKlass.getName()).isEqualTo(klassName);
         assertThat(newKlass.getTeacher().getName()).isEqualTo(teacherName);
+    }
+
+    @Test
+    public void getKlassPage() {
+        int page = 1;
+        int size = 2;
+        Klass klass = new Klass();
+        klass.setName("zhangsan");
+        klassRepository.save(klass);
+        Klass klass2 = new Klass();
+        klass2.setName("lisi");
+        klassRepository.save(klass2);
+        Page<Klass> klasses = klassService.getKlassPage(page, size);
+        assertThat(klasses.getNumber()).isEqualTo(1);
+        assertThat(klasses.getSize()).isEqualTo(2);
     }
 }

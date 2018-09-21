@@ -50,4 +50,12 @@ angular.module('webappApp')
             alert('fail to delete klass');
         });
     };
+    this.getByPage = function(page, size, callBack) {
+        $http.get('/klass/getByPage', {params: {page: page, size: size}})
+        .then(function(response) {
+            callBack(response.data);
+        },function() {
+            alert('fail to page klass');
+        });
+    };
   });

@@ -3,6 +3,7 @@ package com.mengyunzhi.carboncopies.controller;
 import com.mengyunzhi.carboncopies.entity.Klass;
 import com.mengyunzhi.carboncopies.service.KlassService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,5 +34,9 @@ public class KlassController {
     public void delete(@PathVariable Long id) {
         klassService.deleteKlass(id);
         return;
+    }
+    @GetMapping("/getByPage")
+    public Page<Klass> getByPage(@RequestParam int page, @RequestParam int size) {
+        return klassService.getKlassPage(page, size);
     }
 }

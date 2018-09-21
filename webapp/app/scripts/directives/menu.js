@@ -16,19 +16,20 @@ angular.module('webappApp')
         var self = this;
         self.init = function() {
           scope.routes = routes;
-        }();
+        };
         self.isActive = function(name) {
           var currentState = $state.$current;
           if (currentState.parent !== null) {
             while (currentState.parent.parent !== null) {
               currentState = currentState.parent;
-            };
+            }
           }
           if (currentState.name === name) {
           	return true;
           }
         };
         scope.isActive = self.isActive;
+        self.init();
       }
     };
   });

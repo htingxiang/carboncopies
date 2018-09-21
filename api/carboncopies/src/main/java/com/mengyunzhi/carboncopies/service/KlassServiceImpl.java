@@ -3,6 +3,8 @@ package com.mengyunzhi.carboncopies.service;
 import com.mengyunzhi.carboncopies.entity.Klass;
 import com.mengyunzhi.carboncopies.repository.KlassRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -38,5 +40,10 @@ public class KlassServiceImpl implements KlassService {
     @Override
     public Klass addKlass(Klass klass) {
         return klassRepository.save(klass);
+    }
+
+    @Override
+    public Page<Klass> getKlassPage(int page, int size) {
+        return klassRepository.findAll(new PageRequest(page, size));
     }
 }

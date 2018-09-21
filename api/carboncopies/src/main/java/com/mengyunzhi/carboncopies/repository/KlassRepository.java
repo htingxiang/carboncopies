@@ -1,7 +1,7 @@
 package com.mengyunzhi.carboncopies.repository;
 
 import com.mengyunzhi.carboncopies.entity.Klass;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface KlassRepository extends CrudRepository<Klass,Long> {
+public interface KlassRepository extends PagingAndSortingRepository<Klass,Long> {
 }
