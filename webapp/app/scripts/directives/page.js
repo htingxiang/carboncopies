@@ -46,6 +46,10 @@ angular.module('webappApp')
 						beginPage = 1;
 						endPage = totalPages;
 					}
+					if (totalPages == undefined) {
+						beginPage = 1;
+						endPage = 0;
+					}
 					for (var i = beginPage; i <= endPage; i++) {
 						pages.push(i);
 					}

@@ -3,6 +3,7 @@ import com.mengyunzhi.carboncopies.entity.Teacher;
 import com.mengyunzhi.carboncopies.repository.TeacherRepository;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 import java.util.Optional;
@@ -71,5 +72,19 @@ public class TeacherServiceImplTest extends ServiceTest{
         teacherService.updateTeacher(id, teacher2);
         Teacher updateTeacher = teacherRepository.findById(id).get();
         assertThat(updateTeacher.getName()).isEqualTo("teacher2");
+    }
+    @Test
+    public void getKlassPage() {
+        int page = 1;
+        int size = 2;
+        Teacher teacher = new Teacher();
+        teacher.setName("zhangsan");
+        teacherRepository.save(teacher);
+        Teacher teacher2 = new Teacher();
+        teacher2.setName("lisi");
+        teacherRepository.save(teacher2);
+        Page<Teacher> teacheres = teacherService.getTeacherPage(page, size);
+        assertThat(teacheres.getNumber()).isEqualTo(1);
+        assertThat(teacheres.getSize()).isEqualTo(2);
     }
 }

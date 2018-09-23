@@ -3,6 +3,7 @@ package com.mengyunzhi.carboncopies.controller;
 import com.mengyunzhi.carboncopies.entity.Teacher;
 import com.mengyunzhi.carboncopies.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,5 +33,9 @@ public class TeacherController {
     @PutMapping("/updateTeacher{id}")
     public Teacher updateTeacher(@PathVariable Long id, @RequestBody Teacher teacher) {
         return teacherService.updateTeacher(id, teacher);
+    }
+    @GetMapping("/getByPage")
+    public Page<Teacher> getByPage(@RequestParam int page, @RequestParam int size) {
+        return teacherService.getTeacherPage(page,size);
     }
 }

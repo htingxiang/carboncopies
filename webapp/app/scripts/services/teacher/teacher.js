@@ -10,7 +10,15 @@
 angular.module('webappApp')
   .service('teacher', function ($http) {
     // AngularJS will instantiate a singleton by calling "new" on this function
-    this.getAllTeacher = function(callBack) {
+    var self = this;
+    var pageNumber = 0;
+    self.getPageNumber = function() {
+        return pageNumber;
+    };
+    self.setPageNumber = function(number) {
+        pageNumber = number;
+    };
+    self.getAllTeacher = function(callBack) {
     	$http.get('/teacher/getAllTeacher')
     	.then(function(response) {
     		callBack(response.data);
@@ -18,7 +26,7 @@ angular.module('webappApp')
     		console.log('fail to getAllTeacher');
     	});
     };
-    this.addTeacher = function(data, callBack) {
+    self.addTeacher = function(data, callBack) {
         $http.post('/teacher/addTeacher', data)
         .then(function(response) {
             callBack(response);
@@ -26,7 +34,7 @@ angular.module('webappApp')
             console.log('fail to addTeacher');
         });
     };
-    this.delete = function(id, callBack) {
+    self.delete = function(id, callBack) {
         $http.delete('/teacher/delete' + id)
         .then(function() {
             callBack();
@@ -34,7 +42,7 @@ angular.module('webappApp')
             alert('delete fail');
         });
     };
-    this.get = function(id, callBack) {
+    self.get = function(id, callBack) {
         $http.get('/teacher/getTeacher' + id)
         .then(function(response) {
             callBack(response.data);
@@ -42,7 +50,7 @@ angular.module('webappApp')
             alert('get teacher fail');
         });
     };
-    this.update = function(id, data, callBack) {
+    self.update = function(id, data, callBack) {
         $http.put('/teacher/updateTeacher' + id, data)
         .then(function(response) {
             callBack(response.data);

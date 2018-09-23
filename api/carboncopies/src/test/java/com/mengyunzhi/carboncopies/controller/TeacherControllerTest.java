@@ -84,4 +84,15 @@ public class TeacherControllerTest extends ControllerTest{
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(newName));
     }
+    @Test
+    public void getByPage() throws Exception {
+        String pageUrl = this.url + "getByPage";
+        this.mockMvc
+                .perform(get(pageUrl).param("size", "1")
+                .param("page", "2"))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.pageable.pageNumber").value(2))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.pageable.pageSize").value(1))
+                .andDo(print());
+    }
 }

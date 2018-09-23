@@ -3,6 +3,8 @@ package com.mengyunzhi.carboncopies.service;
 import com.mengyunzhi.carboncopies.entity.Teacher;
 import com.mengyunzhi.carboncopies.repository.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -38,5 +40,11 @@ public class TeacherServiceImpl implements TeacherService {
         updateTeacher.setUsername(teacher.getUsername());
         updateTeacher.setSex(teacher.isSex());
         return teacherRepository.save(updateTeacher);
+    }
+
+    @Override
+    public Page<Teacher> getTeacherPage(int page, int size) {
+        PageRequest pageRequest = new PageRequest(page, size);
+        return teacherRepository.findAll(pageRequest);
     }
 }

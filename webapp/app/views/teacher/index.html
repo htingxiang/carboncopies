@@ -1,5 +1,6 @@
 <ui-view>
   <button class="btn btn-default" type="submit" style="margin-bottom: 20px;" ng-click="add()">add</button>
+  <page-by-size size="data.size" reload-by-size="reloadBySize"></page-by-size>
   <table class="table table-striped">
     <tr>
       <td>username</td>
@@ -20,4 +21,5 @@
       <td><a ng-href="#!/edit/{{teacher.id}}">edit</a></td>
     </tr>
   </table>
+  <page number="data.number" total-pages="data.totalPages" reload-page="reloadByNumber" first="data.first" last="data.last"></page>
 </ui-view>
