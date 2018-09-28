@@ -85,6 +85,56 @@ angular
       message: {
         title: 'TeacherAdd'
       }
+    },{
+      name: 'student',
+      templateUrl: 'views/student/index.html',
+      controller: 'StudentIndexCtrl',
+      url: '/student',
+      message: {
+        title: 'Student',
+        show: true
+      }
+    }, {
+      name: 'student.add', 
+      templateUrl: 'views/student/add.html',
+      controller: 'StudentAddCtrl',
+      url: 'add',
+      message: {
+        title: 'StudentAdd'
+      }
+    }, {
+      name: 'student.view',
+      templateUrl: 'views/student/view.html',
+      controller: 'StudentViewCtrl',
+      url: '/view/:id',
+      message: {
+        title: 'StudentView'
+      }
+    }, {
+      name: 'student.edit',
+      templateUrl: 'views/student/edit.html',
+      controller: 'StudentEditCtrl',
+      url: '/edit/:id',
+      message: {
+        title: 'StudentEdit'
+      }
+    }, {
+      name: 'course',
+      templateUrl: 'views/course/index.html',
+      controller: 'CourseIndexCtrl',
+      url: '/course',
+      message: {
+        title: 'Course',
+        show: true
+      }
+    }, {
+      name: 'course.add',
+      templateUrl: 'views/course/add.html',
+      controller: 'CourseAddCtrl',
+      url: '/add',
+      message: {
+        title: 'CourseAdd'
+      }
     }]);
   })
   .config(function($stateProvider, $urlRouterProvider, routes) {

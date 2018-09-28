@@ -13,7 +13,7 @@ angular.module('webappApp')
     self.init = function() {
     	$scope.klasses = {};
         $scope.data = {};
-        $scope.data.number = klass.getPageNumber();
+        $scope.data.number = 0;
         $scope.data.size = page.getPageSize();
         self.reload();
     };
@@ -29,12 +29,11 @@ angular.module('webappApp')
     };
     self.delete = function(id) {
         klass.delete(id, function() {
-            $state.go('klass', {}, {reload: true});
+            self.reload();
         });
     };
     self.reloadByNumber = function(number) {
-        klass.setPageNumber(number);
-        $scope.data.number = klass.getPageNumber();
+        $scope.data.number = number;
         self.reload();
     };
     self.reloadBySize = function(size) {

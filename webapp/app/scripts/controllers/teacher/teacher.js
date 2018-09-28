@@ -12,7 +12,7 @@ angular.module('webappApp')
     var self = this;
     self.init = function() {
       $scope.data = {};
-      $scope.data.number = teacher.getPageNumber();
+      $scope.data.number = 0;
       $scope.data.size = page.getPageSize();
       $scope.teachers = [];
       self.reload();
@@ -28,8 +28,7 @@ angular.module('webappApp')
       });
     };
     self.reloadByNumber = function(number) {
-      teacher.setPageNumber(number);
-      $scope.data.number = teacher.getPageNumber();
+      $scope.data.number = number;
       self.reload();
     };
     self.reloadBySize = function(size) {

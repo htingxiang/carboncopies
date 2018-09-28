@@ -46,7 +46,7 @@ angular.module('webappApp')
 						beginPage = 1;
 						endPage = totalPages;
 					}
-					if (totalPages == undefined) {
+					if (totalPages === undefined) {
 						beginPage = 1;
 						endPage = 0;
 					}

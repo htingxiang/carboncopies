@@ -24,10 +24,12 @@ angular.module('webappApp')
                     params: params
                 })
                 .then(function(response) {
-                    if (response.data.totalPages == 0) {
-                        if (params.page != 0) {
+                    if (response.data.totalPages === 0) {
+                        if (params.page !== 0) {
                             params.page = 0;
                             self.getByPage(url, params, callBack);
+                        } else{
+                            callBack(response.data);
                         }
                     } else {
                         if (params.page > response.data.totalPages - 1) {
@@ -38,8 +40,8 @@ angular.module('webappApp')
                             callBack(response.data);
                         }
                     }
-                }, function(response) {
-                    alert('fail ot page');
+                }, function() {
+                    angular.alert('fail ot page');
                 });
         };
   });

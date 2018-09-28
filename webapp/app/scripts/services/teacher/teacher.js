@@ -11,13 +11,6 @@ angular.module('webappApp')
   .service('teacher', function ($http) {
     // AngularJS will instantiate a singleton by calling "new" on this function
     var self = this;
-    var pageNumber = 0;
-    self.getPageNumber = function() {
-        return pageNumber;
-    };
-    self.setPageNumber = function(number) {
-        pageNumber = number;
-    };
     self.getAllTeacher = function(callBack) {
     	$http.get('/teacher/getAllTeacher')
     	.then(function(response) {
