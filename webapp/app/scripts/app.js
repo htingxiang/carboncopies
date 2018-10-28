@@ -135,6 +135,22 @@ angular
       message: {
         title: 'CourseAdd'
       }
+    }, {
+      name: 'course.view',
+      templateUrl: 'views/course/view.html',
+      controller: 'CourseViewCtrl',
+      url: '/view/:id',
+      message: {
+        title: 'CourseView'
+      }
+    }, {
+      name: 'course.edit',
+      templateUrl: 'views/course/edit.html',
+      controller: 'CourseEditCtrl',
+      url: '/edit/:id',
+      message: {
+        title: 'CourseEdit'
+      }
     }]);
   })
   .config(function($stateProvider, $urlRouterProvider, routes) {

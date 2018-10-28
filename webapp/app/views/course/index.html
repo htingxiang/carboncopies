@@ -2,8 +2,20 @@
   <button class="btn btn-default" type="submit" style="margin-bottom: 20px;" ng-click="add()">add</button>
   <table class="table table-striped">
     <tr>
-      <td>name</td>
-      <td>klassname</td>
+    	<td>order</td>
+      	<td>name</td>
+      	<td>klassname</td>
+      	<td>view</td>
+      	<td>edit</td>
+      	<td>delete</td>
+    </tr>
+    <tr ng-repeat="(key, course) in courses">
+    	<td>{{key + 1}}</td>
+    	<td>{{course.name}}</td>
+    	<td><span ng-repeat="(key, klass) in course.klasses">{{klass.name}}&nbsp&nbsp</span></td>
+    	<td><a ng-href="#!/course/view/{{course.id}}">view</a></td>
+    	<td><a ng-href="#!/course/edit/{{course.id}}">edit</a></td>
+    	<td><a ng-click="delete(course.id)">delete</a></td>
     </tr>
   </table>
 </ui-view>
